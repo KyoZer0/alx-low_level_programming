@@ -28,9 +28,8 @@ int	my_strlen(char *str)
  */
 int	main(void)
 {
-	char str[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19";
+	char str[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 
 	write(2, &str, my_strlen(str));
-	write(2, "\n", 2);
 	return (1);
 }

@@ -25,13 +25,13 @@ int my_strlen(char *s)
  */
 void puts2(char *str)
 {
-	int len = my_strlen(str) - 1;
-	int i  = 0;
+	int len = my_strlen(str);
+	int i = 0;
 
 	while (i < len)
 	{
 		_putchar(str[i]);
-		i = i + 2;
+		i += 2;
 	}
 
 	_putchar('\n');

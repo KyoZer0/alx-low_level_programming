@@ -7,7 +7,7 @@
  *
  * @n: n byte to use
  *
- * Return - pointer s
+ * Return: pointer s
  */
 
 char *_memset(char *s, char b, unsigned int n)

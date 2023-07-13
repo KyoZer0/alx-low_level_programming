@@ -1,20 +1,5 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-/**
- * _strlen - length of string
- *
- * @str: the string
- *
- * Return: the length of str
- */
-int _strlen(char *str)
-{
-	char *p = str;
-
-	while (*str)
-		str++;
-	return (str - p);
-}
 /**
  * *string_nconcat -  a function that concatenates two strings.
  *
@@ -28,29 +13,35 @@ int _strlen(char *str)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int len1 = _strlen(s1);
-	int len2 = _strlen(s2);
-	int index = 0;
-	int jndex = 0;
+	char *s;
+	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	if (n >= len2)
-		n = len2;
-	char *str_nconcat = malloc(sizeof(char) * len1 + n + 1);
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
 
-	if (str_nconcat == NULL)
+	if (n < len2)
+		s = malloc(sizeof(char) * (len1 + n + 1));
+	else
+		s = malloc(sizeof(char) * (len1 + len2 + 1));
+
+	if (!s)
 		return (NULL);
 
-	for (index = 0; s1[index]; index++)
-		str_nconcat[jndex++] = s1[index];
+	while (i < len1)
+	{
+		s[i] = s1[i];
+		i++;
+	}
 
-	for (index = 0; index < n; index++)
-		str_nconcat[jndex++] = s2[index];
+	while (n < len2 && i < (len1 + n))
+		s[i++] = s2[j++];
 
-	str_nconcat[jndex] = '\0';
+	while (n >= len2 && i < (len1 + len2))
+		s[i++] = s2[j++];
 
-	return (str_nconcat);
+	s[i] = '\0';
+
+	return (s);
 }
